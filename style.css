@@ -1,0 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    margin: 20px auto;
+    width: 1000px;
+}
+
+hr {
+    border: 1px solid #eee;
+}
+
+.game-info {
+    display: flex;
+}
+
+.game-info .game-name,
+.game-info .category {
+    flex: 1;
+}
+
+.game-info .category {
+    text-align: right;
+}
+
+.game-info .category span {
+    font-weight: bold;
+    text-transform: capitalize;
+    color: chocolate;
+}
+
+.row {
+    display: flex;
+}
+
+.row .hangman-draw {
+    flex: 1;
+    background-color: #f8f8f8;
+    padding: 20px;
+    height: 324px;
+}
+
+.hangman-draw .the-draw {
+    width: 60px;
+    height: 280px;
+    border-bottom: 4px solid #222;
+    position: relative;
+    margin: auto;
+}
+
+.hangman-draw .the-stand {
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #222;
+}
+
+.hangman-draw .the-hang::before {
+    content: "";
+    position: absolute;
+    background-color: #222;
+    height: 4px;
+    width: 100px;
+    left: 30px;
+    top: 15px;
+}
+
+.hangman-draw .the-hang::after {
+    content: "";
+    position: absolute;
+    background-color: #222;
+    height: 30px;
+    width: 4px;
+    left: 130px;
+    top: 15px;
+}
+
+.hangman-draw .the-rope {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: absolute;
+    /* Half the Width + Half the Total Width of the Hang (35+65); */
+    left: 95px;
+    top: 45px;
+    border: 4px dashed #222;
+}
+
+.hangman-draw .the-man .head {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    left: 105px;
+    top: 55px;
+    border: 4px solid #222;
+}
+
+.hangman-draw .the-man .body {
+    position: absolute;
+    background-color: #222;
+    width: 4px;
+    height: 100px;
+    top: 105px;
+    left: 130px;
+}
+
+.hangman-draw .the-man .hands::before,
+.hangman-draw .the-man .hands::after {
+    content: "";
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: #222;
+    top: 130px;
+}
+
+.hangman-draw .the-man .hands::before {
+    left: 130px;
+    transform: rotate(-30deg);
+}
+
+.hangman-draw .the-man .hands::after {
+    left: 85px;
+    transform: rotate(30deg);
+}
+
+.hangman-draw .the-man .legs::before,
+.hangman-draw .the-man .legs::after {
+    content: "";
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: #222;
+    top: 215px;
+}
+
+.hangman-draw .the-man .legs::before {
+    left: 130px;
+    transform: rotate(30deg);
+}
+
+.hangman-draw .the-man .legs::after {
+    left: 85px;
+    transform: rotate(-30deg);
+}
+
+.row .letters {
+    flex: 1;
+    margin: 0 5px;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 10px;
+    justify-content: space-evenly;
+    align-content: stretch;
+}
+
+.row .letters .letter-box {
+    box-shadow: 0 0 2px 2px #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: burlywood;
+    color: white;
+    font-weight: bold;
+}
+
+.row .letters .letter-box.clicked {
+    background-color: #333;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.letters-guess {
+    margin: 10px auto;
+    background-color: #f8f8f8;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 104px;
+}
+
+.letters-guess span {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    margin-right: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 2px 2px #e2e2e2;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #fdfdfd;
+    border-bottom: 3px solid #222;
+    transition: 0.5s;
+}
+
+.letters-guess span.space {
+    background-color: transparent;
+    border-bottom: none;
+    box-shadow: none;
+    position: relative;
+}
+
+.letters-guess span.space::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 4px;
+    background-color: black;
+}
+
+.status {
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+    margin: 10px 0;
+    text-align: center;
+    display: none;
+}
