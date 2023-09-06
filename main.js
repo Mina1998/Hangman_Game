@@ -18,6 +18,9 @@ const words = {
     countries: ["Egypt", "Syria", "Palestine", "Qatar", "Bahrain"]
 };
 
+
+
+
 // Get All Keys from Object and Return them in an Array
 let keys = Object.keys(words);
 // Generate Random Key Number

@@ -1,0 +1,6 @@
+{
+    "programming": ["php", "javascript","go", "ruby", "scala", "mysql", "python", "fortran"],
+    "movies": ["Prestige", "Inception", "Parasite", "Interstellar", "Coco", "Up"],
+    "people": ["Albert Einstein", "Alexander", "Cleopatra"],
+    "countries": ["Egypt", "Syria", "Palestine", "Qatar", "Bahrain"]
+}
