@@ -42,8 +42,8 @@ for(let i = 0; i < randomWordArray.length; i++) {
 console.log(randomWord);
 let wordWithoutSpacingLength = wordWithoutSpacing.length;
 let numberOfGuessedRightLetters = 0;
-const numberOfAllowedFaults = 7;
 let numberOfGuessedFaultLetters = 0;
+let drawings = document.querySelectorAll(".line");
 
 randomWordArray.forEach((letter) => {
     let span = document.createElement("span");
@@ -68,13 +68,28 @@ document.addEventListener("click" , (e) => {
             }
         })
         if (!found) {
+            drawings[numberOfGuessedFaultLetters].classList.add("d-block");
             numberOfGuessedFaultLetters++;
         }
         found = false;
-        console.log(numberOfGuessedFaultLetters);
         if (wordWithoutSpacingLength === numberOfGuessedRightLetters) {
             document.querySelector(".status").innerHTML = "YOU WIN!!";
             document.querySelector(".status").style.display = "block";
+            finishGame();
+        } else if (numberOfGuessedFaultLetters === drawings.length) {
+            document.querySelector(".status").innerHTML = "YOU LOSE!!";
+            document.querySelector(".status").style.display = "block";
+            finishGame();
+            let wordH3 = document.createElement("h3");
+            wordH3.appendChild(document.createTextNode(`The Word is : ${randomWordArray.toString().replaceAll(',', '').toUpperCase()}`));
+            document.querySelector(".status").appendChild(wordH3);
         }
     }
 })
+
+function finishGame() {
+    let lettersBoxes = document.querySelectorAll(".letter-box");
+    lettersBoxes.forEach((letterBox) => {
+        letterBox.classList.add("finished");
+    })
+}

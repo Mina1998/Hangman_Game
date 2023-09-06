@@ -152,6 +152,14 @@ hr {
     transform: rotate(-30deg);
 }
 
+.line {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
 .row .letters {
     flex: 1;
     margin: 0 5px;
@@ -174,10 +182,14 @@ hr {
     font-weight: bold;
 }
 
+.row .letters .letter-box.clicked,
+.row .letters .letter-box.finished {
+    pointer-events: none;
+}
+
 .row .letters .letter-box.clicked {
     background-color: #333;
     opacity: 0.2;
-    pointer-events: none;
 }
 
 .letters-guess {
